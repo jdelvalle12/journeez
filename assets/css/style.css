@@ -58,8 +58,8 @@ header .icon {
     width: 1rem;
     padding-right: 0.5rem;
     image-orientation: url('./assets/images/Travel Route Icon.png') no-repeat 100% 0;
-    width: 60px;
-    height: 60px;
+    width: 10px;
+    height: auto;
 }    
 
 header nav ul {
