@@ -6,6 +6,11 @@ const typeDefs = gql`
     name: String
   }
 
+  type Marker {
+    type: String
+    coordinates: [Float]
+  }
+
   type Lodging {
     _id: ID
     name: String
@@ -13,6 +18,7 @@ const typeDefs = gql`
     image: String
     rating: Float
     location: Location
+    marker: Marker
   }
 
   type Attraction {
@@ -22,6 +28,7 @@ const typeDefs = gql`
     image: String
     price: Float
     location: Location
+    marker: Marker
   }
 
   type Eatery {
@@ -32,6 +39,7 @@ const typeDefs = gql`
     rating: Float
     price: Float
     location: Location
+    marker: Marker
   }
 
   type User {
