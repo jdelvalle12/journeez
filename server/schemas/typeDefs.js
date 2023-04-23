@@ -66,6 +66,42 @@ const typeDefs = gql`
     user: User
   }
 
+  input UpdateLodgingInput {
+    name: String
+    description: String
+    image: String
+    rating: Float
+    price: Float
+    occupancy: Int
+    locationId: ID
+    marker: MarkerInput
+  }
+
+  input UpdateAttractionInput {
+    name: String
+    description: String
+    image: String
+    price: Float
+    locationId: ID
+    marker: MarkerInput
+  }
+
+  input UpdateEateryInput {
+    name: String
+    description: String
+    image: String
+    rating: Float
+    price: Float
+    cuisine: String
+    locationId: ID
+    marker: MarkerInput
+  }
+
+  input MarkerInput {
+    type: String
+    coordinates: [Float]
+  }
+
   type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     updateUser(firstName: String, lastName: String, email: String, password: String): User

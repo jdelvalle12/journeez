@@ -59,7 +59,7 @@ const resolvers = {
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          populate: 'location'
+          path: 'location'
         });
 
         return user;
@@ -85,6 +85,11 @@ const resolvers = {
     // existing mutation resolvers here
     addLodging: async (parent, args, context) => {
       if (context.user) {
+        const locationExists = await Location.exists({ _id: args.locationId });
+
+      if (!locationExists) {
+      throw new UserInputError('Invalid location ID');
+      }
         const lodging = await Lodging.create({ ...args, location: args.locationId });
 
         await Location.findByIdAndUpdate(args.locationId, { $push: { lodgings: lodging._id } });
@@ -96,6 +101,13 @@ const resolvers = {
     },
     addAttraction: async (parent, args, context) => {
       if (context.user) {
+
+        const locationExists = await Location.exists({ _id: args.locationId });
+
+        if (!locationExists) {
+        throw new UserInputError('Invalid location ID');
+        }
+
         const attraction = await Attraction.create({ ...args, location: args.locationId });
 
         await Location.findByIdAndUpdate(args.locationId, { $push: { attractions: attraction._id } });
@@ -107,6 +119,13 @@ const resolvers = {
     },
     addEatery: async (parent, args, context) => {
       if (context.user) {
+
+        const locationExists = await Location.exists({ _id: args.locationId });
+
+        if (!locationExists) {
+        throw new UserInputError('Invalid location ID');
+        }
+
         const eatery = await Eatery.create({ ...args, location: args.locationId });
 
         await Location.findByIdAndUpdate(args.locationId, { $push: { eateries: eatery._id } });
@@ -116,43 +135,43 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    updateLodging: async (parent, args, context) => {
+    updateLodging: async (parent, { id, input }, context) => {
       if (context.user) {
-        return await Lodging.findByIdAndUpdate(args._id, args.input, { new: true });
+        return await Lodging.findByIdAndUpdate(id, input, { new: true }).populate('location');
+      }
+    
+      throw new AuthenticationError('Not logged in');
+    },
+    updateAttraction: async (parent, { id, input }, context) => {
+      if (context.user) {
+        return await Attraction.findByIdAndUpdate(id, input, { new: true }).populate('location');
       }
 
       throw new AuthenticationError('Not logged in');
     },
-    updateAttraction: async (parent, args, context) => {
+    updateEatery: async (parent, { id, input }, context) => {
       if (context.user) {
-        return await Attraction.findByIdAndUpdate(args._id, args.input, { new: true });
-      }
-
-      throw new AuthenticationError('Not logged in');
-    },
-    updateEatery: async (parent, args, context) => {
-      if (context.user) {
-        return await Eatery.findByIdAndUpdate(args._id, args.input, { new: true });
+        return await Eatery.findByIdAndUpdate(id, input, { new: true }).populate('location');
       }
 
       throw new AuthenticationError('Not logged in');
     },
     deleteLodging: async (parent, { _id }, context) => {
       if (context.user) {
-        const lodging = await Lodging.findByIdAndDelete(_id);
-
-        await Location.findByIdAndUpdate(lodging.location, { $pull: { lodgings: _id } });
-
+        const lodging = await Lodging.findByIdAndDelete(_id).populate('location');
+    
+        await Location.findByIdAndUpdate(lodging.Location._id, { $pull: { lodgings: _id } });
+    
         return lodging;
       }
-
+    
       throw new AuthenticationError('Not logged in');
     },
     deleteAttraction: async (parent, { _id }, context) => {
       if (context.user) {
-        const attraction = await Attraction.findByIdAndDelete(_id);
+        const attraction = await Attraction.findByIdAndDelete(_id).populate('location');
 
-        await Location.findByIdAndUpdate(attraction.location, { $pull: { attractions: _id } });
+        await Location.findByIdAndUpdate(attraction.Location._id, { $pull: { attractions: _id } });
 
         return attraction;
       }
@@ -161,9 +180,9 @@ const resolvers = {
     },
     deleteEatery: async (parent, { _id }, context) => {
       if (context.user) {
-        const eatery = await Eatery.findByIdAndDelete(_id);
+        const eatery = await Eatery.findByIdAndDelete(_id).populate('location');
 
-        await Location.findByIdAndUpdate(eatery.location, { $pull: { eateries: _id } });
+        await Location.findByIdAndUpdate(eatery.Location._id, { $pull: { eateries: _id } });
 
         return eatery;
       }
