@@ -4,6 +4,10 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+// import Nav from '../components/Nav';
+import ReactDOM from 'react-router-dom';
+// import '/globals.css';
+import App from './_app';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -105,7 +109,7 @@ export default function Home() {
       </div> */}
 
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
+      {/* <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
           href="/about"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-black-300 hover:bg-black-100 hover:text-white hover:bg-black"
@@ -201,7 +205,7 @@ export default function Home() {
           </p>
         </a> */}
 
-      </div>
+      {/* </div> */} */
 
         <div className="carousel-container relative w-full items-center  "> 
           <Carousel 
