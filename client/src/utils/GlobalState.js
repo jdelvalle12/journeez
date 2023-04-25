@@ -1,23 +1,24 @@
-import React, { createContext, useContext } from "react";
-import { useProductReducer } from './reducers'
+// import dynamic from 'next/dynamic';
+import { createContext, useContext } from 'react';
 
-const StoreContext = createContext();
-const { Provider } = StoreContext;
+const { Provider } = createContext();
 
-const StoreProvider = ({ value = [], ...props }) => {
-  const [state, dispatch] = useProductReducer({
-    products: [],
-    cart: [],
-    cartOpen: false,
-    categories: [],
-    currentCategory: '',
-  });
+const TravelProvider = ({ children }) => {
+  const initialState = {
+    user: null,
+    destinations: [],
+    selectedDestination: null,
+    tripStartDate: null,
+    tripEndDate: null,
+    tripBudget: null,
+    tripActivities: [],
+  };
 
-  return <Provider value={[state, dispatch]} {...props} />;
+  return <Provider value={initialState}>{children}</Provider>;
 };
 
-const useStoreContext = () => {
-  return useContext(StoreContext);
+const useTravelContext = () => {
+  return useContext(createContext());
 };
 
-export { StoreProvider, useStoreContext };
+export { TravelProvider, useTravelContext };

@@ -31,7 +31,7 @@ export default function Explore() {
     return () => {
       map.remove();
     }
-  }, []);
+  }, [locations]);
 
   return (
     <div>

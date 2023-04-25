@@ -1,13 +1,17 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import  Link  from 'next/link';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 // import Nav from '../components/Nav';
-import ReactDOM from 'react-router-dom';
-// import '/globals.css';
-import App from './_app';
+import Head from 'next/head';
+import ReactDOM from 'react-dom';
+import useSWR from 'swr';
+// import { fetcher } from './lib/fetcher';
+// import App from './_app';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -97,7 +101,7 @@ export default function Home() {
         </div> */}
       </div>
 
-      {/* <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
+      {/* {/* <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
         <Image
           className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
           src="/next.svg"
@@ -109,15 +113,15 @@ export default function Home() {
       </div> */}
 
 
-      {/* <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
+       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
-          href="/about"
+          href="/blogs"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-black-300 hover:bg-black-100 hover:text-white hover:bg-black"
           target="_blank"
           rel="noopener noreferrer"
         >
           <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            About{' '}
+          Blogs{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -125,7 +129,7 @@ export default function Home() {
           <p
             className={`${inter.className} m-0 max-w-[30ch] text-sm hover:text-white`}
           >
-            See what we are about!
+           See what other travelers have to say in their experience.
           </p>
         </a>
 
@@ -168,13 +172,13 @@ export default function Home() {
         </a>
 
         <a
-          href="/blogs"
+          href="/shop"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-black-300 hover:bg-black-100 hover:text-white hover:bg-black"
           target="_blank"
           rel="noopener noreferrer"
         >
           <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Blogs{' '}
+            Shop{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -182,7 +186,7 @@ export default function Home() {
           <p
             className={`${inter.className} m-0 max-w-[30ch] text-sm hover:text-white`}
           >
-            See what other travelers have to say in their experience.
+            Get everything you need for your next trip!
           </p>
         </a>
 
@@ -205,7 +209,7 @@ export default function Home() {
           </p>
         </a> */}
 
-      {/* </div> */} */
+      </div>
 
         <div className="carousel-container relative w-full items-center  "> 
           <Carousel 

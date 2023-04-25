@@ -1,69 +1,70 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
+
+export const LOCATIONS_QUERY = gql`
+  query {
+    locations {
+      _id
+      name
+      coordinates
+    }
+  }
+`;
+
+export const LODGINGS_QUERY = gql`
+  query lodgings($location: ID, $name: String) {
+    lodgings(location: $location, name: $name) {
       _id
       name
       description
-      price
-      quantity
-      image
-      category {
+      location {
         _id
-      }
-    }
-  }
-`;
-
-export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
-      session
-    }
-  }
-`;
-
-export const QUERY_ALL_PRODUCTS = gql`
-  {
-    products {
-      _id
-      name
-      description
-      price
-      quantity
-      category {
         name
+        coordinates
       }
     }
   }
 `;
 
-export const QUERY_CATEGORIES = gql`
-  {
-    categories {
+export const ATTRACTIONS_QUERY = gql`
+  query attractions($location: ID, $name: String) {
+    attractions(location: $location, name: $name) {
       _id
       name
+      description
+      location {
+        _id
+        name
+        coordinates
+      }
     }
   }
 `;
 
-export const QUERY_USER = gql`
-  {
-    user {
-      firstName
-      lastName
-      orders {
+export const EATERIES_QUERY = gql`
+  query eateries($location: ID, $name: String) {
+    eateries(location: $location, name: $name) {
+      _id
+      name
+      description
+      location {
         _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
+        name
+        coordinates
+      }
+    }
+  }
+`;
+
+export const USER_QUERY = gql`
+  query {
+    user {
+      _id
+      email
+      location {
+        _id
+        name
+        coordinates
       }
     }
   }
