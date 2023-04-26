@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import  Link  from 'next/link';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
@@ -31,10 +31,10 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
+    <div className="sign-up-container my-1">
+      <Link className='go-to-login' href="/login">← Go to Login</Link>
 
-      <h2>Signup</h2>
+      <h2 className='sign-up-heading'>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="firstName">First Name:</label>
@@ -76,7 +76,7 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row flex-end">
+        <div className="submit-button flex-row flex-end">
           <button type="submit">Submit</button>
         </div>
       </form>

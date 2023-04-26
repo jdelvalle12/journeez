@@ -26,17 +26,181 @@ img {
   margin: 0 auto;
 }
 
+.video-container {
+  width: 90% ;
+  height: auto ;
+  margin-left: 1.5rem;
+  padding: 1rem ;
+}
+
 .carousel-container {
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 
 .nav-list {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 10rem;
   flex-direction: row;
+}
+
+.nav-item {
+  flex: 1 1 4rem;
+  height: 10rem;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 18rem;
+  height: 100%;
+  border: 1px solid black;
+  text-decoration: none;
+  background-color: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.nav-link:hover {
+  background-color: #f9f9f9;
+  transform: translateY(-0.5rem);
+}
+
+.nav-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.3rem;
+}
+
+.nav-subtitle {
+  font-size: 1rem;
+}
+
+.menu-items {
+  display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-size: 1.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.nav-list li {
-  margin: 0 10px;
+
+.menu-items li {
+  margin: 0 3px;
+}
+
+.menu-items button {
+  background-color: #f7f7f7;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.menu-items a {
+  color: #333;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  padding-right: 3rem;
+}
+
+.alert {
+  background-color: #ff6666;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert button {
+  background-color: white;
+  border: none;
+  color: #ff6666;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.about-us {
+  font-size: 5rem; /* or any other desired font size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  margin-top: 25rem;
+  margin-left: 20rem;
+  position: absolute;
+  flex-direction: column;
+   /* or any other desired height */
+}
+
+.about-us h2 {
+  font-size: 5rem; /* or any other desired font size */
+  margin-bottom: 5rem; /* or any other desired margin */
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.about-us p {
+  font-size: 1.2rem; /* or any other desired font size */
+  text-align: center;
+  margin: 0 2rem 1rem 6rem; /* or any other desired margin */
+  display: flex;
+  width: 40rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.about-us-img {
+  margin-top: 33rem;
+}
+
+.sign-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 600px;
+  margin: 3rem auto;
+  border: 5px solid #ccc;
+  padding: 1rem;
+  font-size: 2rem;
+}
+.go-to-login {
+  display: flex;
+  margin-bottom: 25rem;
+  font-size: 1.5rem;
+}
+
+.sign-up-heading {
+  margin-bottom: 42rem;
+  padding-left: 2rem;
+  display: flex;
+}
+
+.submit-button {
+  background-color: aqua;
+  border: 3px solid black;
+  width: 7rem;
+  margin-top: 1rem;
 }

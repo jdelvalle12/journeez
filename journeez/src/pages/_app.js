@@ -4,6 +4,13 @@ import { TravelProvider } from '../utils/GlobalState';
 import Nav from '../components/Nav';
 import '../styles/globals.css';
 import { setContext } from 'apollo-link-context';
+// import Home from './pages/Home';
+import About from '../pages/About';
+import Explore from '../pages/Explore';
+import Login from '../pages/Login';
+import Signup from '../pages/Signup';
+import Profile from '../pages/Profile';
+import Blogs from '../pages/Blogs';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -35,8 +42,9 @@ export default function App({ Component, pageProps }) {
 
   <ApolloProvider client={client}>
    <TravelProvider>
-    <Nav />
-    <Component {...pageProps} />
+      <Nav />
+      
+        <Component {...pageProps} />
     </TravelProvider>  
   </ApolloProvider>
   </>

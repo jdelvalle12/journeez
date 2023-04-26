@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+// import { getCurrentWeather, getWeatherForecast } from "./api/weather";
 import  Link  from 'next/link';
 import { useState, useEffect } from 'react';
 import React from 'react';
@@ -11,7 +12,6 @@ import Head from 'next/head';
 import ReactDOM from 'react-dom';
 import useSWR from 'swr';
 // import { fetcher } from './lib/fetcher';
-// import App from './_app';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,8 +23,8 @@ const inter = Inter({ subsets: ['latin'] })
 //   slidesToScroll: 1,
 //   responsive: [
 //     {
-//       breakpoint: 1024,
-//       settings: {
+  //       breakpoint: 1024,
+  //       settings: {
 //         slidesToShow: 2,
 //         slidesToScroll: 1,
 //         infinite: true,
@@ -35,11 +35,11 @@ const inter = Inter({ subsets: ['latin'] })
 //     {
 //       breakpoint: 600,
 //       settings: {
-//         slidesToShow: 1,
-//         slidesToScroll: 1,
-//         initialSlide: 1,
-//         dots: true,
-//         autoplay: true
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //         initialSlide: 1,
+  //         dots: true,
+  //         autoplay: true
 //       }
 //     }
 //   ]
@@ -58,14 +58,14 @@ const Carousel = ({ images }) => {
   return (
     <Slider {...settings}>
        {images.map((image, index) => (
-        <div key={index}>
+         <div key={index}>
       <div>
         <Image src={image} alt={`Slide ${index + 1}`} width={600} height={400}/>
       </div>
       {/* <div>
         <Image src={"/images/Travel Gears.jpg"} alt={`Slide ${index + 2}`} width={300} height={25}/>
-      </div>
-      <div>
+        </div>
+        <div>
         <Image src={"/images/Tropical Summer Getaways.jpg"} alt={`Slide ${index + 3}`} width={300} height={25}/>
       </div> */}
       </div>
@@ -74,13 +74,75 @@ const Carousel = ({ images }) => {
   );
 };
 
+// useEffect(() => {
+// // get current weather data
+// getCurrentWeather(latitude, longitude)
+// .then((data) => {
+//   // handle current weather data
+// })
+// .catch((error) => {
+//   console.log(error);
+// });
+
+// // get weather forecast data
+// getWeatherForecast(latitude, longitude)
+// .then((data) => {
+//   // handle weather forecast data
+// })
+// .catch((error) => {
+//   console.log(error)
+// });
+// }, [latitude, longitude]);
+
+ // render the rest of your component here
+
+//  return <div></div>;
+
+
 export default function Home() {
+  
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
+      {/* <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
       <p className="absolute left-20 top-10 flex w-full justify-center text-4xl lg:w-auto  ">
           Journe<span className="text-5xl font-bold text-blue-500">EZ</span>
-      </p>
+      </p> */}
+
+      <div className="video-container">
+        <video autoPlay loop muted className="video-container" >
+          <source  src="/images/Mykonos-aerial-view.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+      </div>
+    
+      <div className="carousel-container relative w-full items-center  "> 
+        <Carousel 
+          className="carousel-wrapper"
+          images={[
+            "/images/Tropical Summer Getaways.jpg", "/images/Travel Gears.jpg", "/images/Horizon.jpg"]}
+            />
+      </div>
+
+     {/* </div>       */}
+    </main>
+    );
+  }
+
+  {/* <div className="links-container flex justify-between mb-8">
+  <div className="left-links">
+  <li className="nav-item mb-32">
+  <button className="nav-link group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-black-300 hover:bg-black-100 hover:text-white hover:bg-black" onClick={handleAlert}>Alerts!</button>
+  </li>
+  </div>
+  <div className="right-links flex gap-4">
+  <li className="nav-item mb-32">
+  <Link href="/signup" className="nav-link group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-black-300 hover:bg-black-100 hover:text-white hover:bg-black">Signup</Link>
+  </li>
+  <li className="nav-item mb-32">
+  <Link href="/login" className="nav-link group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-black-300 hover:bg-black-100 hover:text-white hover:bg-black">Login</Link>
+  </li>
+  </div>
+</div> */}
         {/* <div className="fixed top-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-end gap-2 p-8 lg:pointer-events-auto lg:p-0 ml-80"
@@ -99,7 +161,6 @@ export default function Home() {
             />
           </a>
         </div> */}
-      </div>
 
       {/* {/* <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
         <Image
@@ -113,7 +174,7 @@ export default function Home() {
       </div> */}
 
 
-       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
+       {/* <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
           href="/blogs"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-black-300 hover:bg-black-100 hover:text-white hover:bg-black"
@@ -188,7 +249,7 @@ export default function Home() {
           >
             Get everything you need for your next trip!
           </p>
-        </a>
+        </a> */}
 
         {/* <a
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
@@ -209,16 +270,5 @@ export default function Home() {
           </p>
         </a> */}
 
-      </div>
+      {/* </div> */}
 
-        <div className="carousel-container relative w-full items-center  "> 
-          <Carousel 
-            className="carousel-wrapper"
-              images={[
-                "/images/Tropical Summer Getaways.jpg", "/images/Travel Gears.jpg", "/images/Horizon.jpg"]}
-              />
-        </div>
-
-    </main>
-  )
-}

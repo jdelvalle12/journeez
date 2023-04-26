@@ -1,11 +1,17 @@
 // pages/api/locations.js
-import locations from '../../data/locations.json'
 import axiosInstance from './axiosInstance';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
-    res.status(200).json(locations)
+    axiosInstance.get('/locations')
+      .then(response => {
+        res.status(200).json(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+      });
   } else {
-    res.status(405).end()
+    res.status(405).end();
   }
 }
