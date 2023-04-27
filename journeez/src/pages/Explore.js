@@ -101,8 +101,20 @@ eateries.forEach(eatery => {
   //     })
   //     .catch(error => console.error(error));
   // };
-  const pk = 'eyJ1IjoiamRlbHZhbGxlMTIiLCJhIjoiY2xnc2YyZG92MW50MTNqbWs1enV6a3gyOSJ9.NyHRU66sRujiLrEwi7AXow';
-  const handleSearch = () => {
+  
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    
+    const pk = 'pk.eyJ1IjoiamRlbHZhbGxlMTIiLCJhIjoiY2xnc2YyZG92MW50MTNqbWs1enV6a3gyOSJ9.NyHRU66sRujiLrEwi7AXow';
+  
+    document.addEventListener('load', () => {
+
+    const searchButton = document.getElementById('searchButton');
+    const searchInput = document.getElementById('searchInput');
+
+    searchButton.addEventListener('click', () => {
+    const searchValue = searchInput.value;
+
     // Use the Mapbox Geocoding API to search for places and get their coordinates
     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchValue}.json?access_token=${pk}`)
       .then(response => response.json())
@@ -113,12 +125,15 @@ eateries.forEach(eatery => {
         // Center the map on the coordinates
         map.setCenter(coordinates);
         
-        // Add a marker at the coordinates
-        new L.Marker(coordinates).addTo(map);
+        new Mapbox.Marker({color: 'black'})
+        .setLngLat(coordinates)
+        .addTo(map);
       })
       .catch(error => console.error(error));
-  }
- console.log(map);
+    });
+  });
+} 
+ 
   // const handleLodgingSearch = () => {
   //   // Fetch lodging data from API based on user's search value
   //   fetch(`/api/lodging?q=${lodgingSearchValue}`)

@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-// import { getCurrentWeather, getWeatherForecast } from "./api/weather";
-import  Link  from 'next/link';
+import Weather from "../pages/api/weather";
+// import { getCurrentWeather, getWeatherForecast } from '../pages/api/weather';
+// import  Link  from 'next/link';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import Slider from 'react-slick';
@@ -100,6 +101,8 @@ const Carousel = ({ images }) => {
 
 
 export default function Home() {
+ 
+
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -113,6 +116,10 @@ export default function Home() {
           <source  src="/images/Mykonos-aerial-view.mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>
+      </div>
+
+      <div>
+        <Weather className='weather-dashboard' />
       </div>
     
       <div className="carousel-container relative w-full items-center  "> 

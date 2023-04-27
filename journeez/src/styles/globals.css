@@ -34,12 +34,13 @@ img {
 .video-container {
   width: 80% ;
   height: auto ;
-  margin-left: 5rem;
+  margin-left: 15rem;
   padding: 1rem ;
 }
 
 .carousel-container {
-  margin-top: 4rem;
+  margin-top: -105rem;
+  margin-left: 30rem;
 }
 
 /* Navbar */
@@ -325,4 +326,96 @@ img {
   width: 10rem;
   background-color: black;
   color: white
+}
+
+.weather-dashboard-card {
+  margin-right: 55rem;
+  margin-top: -30rem;
+  font-size: 1.2rem;
+}
+
+.weather-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: right;  
+  justify-content: space-between;
+}
+
+.search-container {
+  margin: 1rem;
+}
+
+.search-input {
+  margin-right: 1rem;
+}
+
+.search-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.current-weather-container {
+  margin: 1rem;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
+.current-weather-details {
+  background-color: lightcyan;
+  display: flex;
+  align-items: center;
+  border: 1px solid black
+}
+
+.current-weather-details img {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+.current-weather-details p {
+  margin: 0;
+}
+
+.forecast-container {
+  margin: 1rem;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
+.forecast-list {
+  list-style-type: none;
+  padding: 0;
+  flex-direction: column;
+  display: flex;
+}
+
+.forecast-item {
+  background-color: lightcyan;
+  margin-bottom: 0.5rem;
+  border: 1px solid black
+}
+
+.forecast-details {
+  display: flex;
+  align-items: center;
+}
+
+.forecast-details img {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+
+.forecast-details p {
+  margin-right: 1rem;
 }

@@ -4,6 +4,7 @@ import { TravelProvider } from '../utils/GlobalState';
 import Nav from '../components/Nav';
 import '../styles/globals.css';
 import { setContext } from 'apollo-link-context';
+// import Weather from "./api/weather";
 // import Home from './pages/Home';
 // import About from '../pages/About';
 // import Explore from '../pages/Explore';
@@ -45,6 +46,7 @@ export default function App({ Component, pageProps }) {
       <Nav />
       
         <Component {...pageProps} />
+       
     </TravelProvider>  
   </ApolloProvider>
   </>

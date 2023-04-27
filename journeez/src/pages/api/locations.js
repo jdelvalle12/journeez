@@ -1,5 +1,5 @@
 // pages/api/locations.js
-import axiosInstance from './axiosInstance';
+import axiosInstance from '../api/axiosInstance';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
