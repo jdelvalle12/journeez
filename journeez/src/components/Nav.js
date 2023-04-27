@@ -88,7 +88,7 @@ function Nav() {
   </li>
 
   <li className="nav-item mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-    <Link href="/Trending-Trips" className="nav-link group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-black-300 hover:bg-black-100 hover:text-white hover:bg-black">
+    <Link href="/Language-Culture" className="nav-link group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-black-300 hover:bg-black-100 hover:text-white hover:bg-black">
       
         <h2 className={`nav-title ${inter.className} m-0 max-w-[30ch] text-sm hover:text-white`}>
           Langauge and Culture{'>'}
