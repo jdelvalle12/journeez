@@ -6,6 +6,13 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 function Nav() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  function handleLogout() {
+    setIsLoggedIn(false);
+  }
+
   const [showAlert, setShowAlert] = useState(false);
   
   function handleAlert() {
@@ -15,33 +22,41 @@ function Nav() {
   
   return (
     <>
-       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-      <p className="absolute left-20 top-10 flex w-full justify-center text-4xl lg:w-auto  ">
-          Journe<span className="text-5xl font-bold text-blue-500" href="/">EZ</span>
+    <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
+      <p className="app-title absolute left-20 top-10 flex w-full justify-center text-4xl lg:w-auto  ">
+        Journe<span className="text-5xl font-bold text-blue-800" href="/">EZ</span>
       </p>
-        </div>
-    <div className="menu-items">
-  <li>
-    <button onClick={handleAlert}>Alerts!</button>
-  </li>
-  <li>
-    <Link href="/" >Home</Link>
-  </li>
-  <li>
-    <Link href="/About" >About</Link>
-  </li>
-  <li>
-    <Link href="/Signup" >Signup</Link>
-  </li>
-  <li>
-    <Link href="/Login" >Login</Link>
-  </li>
-  {showAlert && (
-    <div className="alert" role="alert">
-      This is an alert!
-      <button onClick={() => setShowAlert(false)}>Close</button>
     </div>
-  )}
+    <div className="menu-items">
+      <li>
+        <button onClick={handleAlert}>Alerts!</button>
+      </li>
+      <li>
+        <Link href="/" >Home</Link>
+      </li>
+      <li>
+        <Link href="/About" >About</Link>
+      </li>
+      {isLoggedIn ? (
+        <li>
+          <button onClick={handleLogout}>Logout</button>
+        </li>
+       ) : (
+        <>
+        <li>  
+         <Link href="/Signup" >Signup</Link>
+        </li>
+        <li>
+          <Link href="/Login" >Login</Link>
+        </li>
+        {showAlert && (
+          <div className="alert" role="alert">
+            This is an alert!
+            <button onClick={() => setShowAlert(false)}>Close</button>
+        </div>
+        )}
+        </>
+       )}
 </div>
     
 <nav>
@@ -76,10 +91,10 @@ function Nav() {
     <Link href="/Trending-Trips" className="nav-link group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-black-300 hover:bg-black-100 hover:text-white hover:bg-black">
       
         <h2 className={`nav-title ${inter.className} m-0 max-w-[30ch] text-sm hover:text-white`}>
-          Trending Trips{'>'}
+          Langauge and Culture{'>'}
         </h2>
         <p className="nav-subtitle inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-          See what are the most trending trips to take.
+          Learn about the local language and culture of different destinations, including common phrases, customs, and traditions.
         </p>
       
     </Link>
@@ -93,8 +108,7 @@ function Nav() {
         </h2>
         <p className="nav-subtitle inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
         Get everything you need for your next trip!
-        </p>
-      
+        </p>      
     </Link>
   </li>
     

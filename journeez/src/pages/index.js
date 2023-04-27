@@ -107,7 +107,7 @@ export default function Home() {
       <p className="absolute left-20 top-10 flex w-full justify-center text-4xl lg:w-auto  ">
           Journe<span className="text-5xl font-bold text-blue-500">EZ</span>
       </p> */}
-
+      <h1 className='text-5xl font-bold text-blue-800 mb-20'>Welcome, your adventure awaits!</h1>
       <div className="video-container">
         <video autoPlay loop muted className="video-container" >
           <source  src="/images/Mykonos-aerial-view.mp4" type="video/mp4" />

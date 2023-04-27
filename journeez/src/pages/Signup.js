@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import  Link  from 'next/link';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
-function Signup(props) {
+function Signup() {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
+
+  const router = useRouter();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -20,6 +23,9 @@ function Signup(props) {
     });
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
+
+      // Redirect to profile page
+      router.push('./Profile');
   };
 
   const handleChange = (event) => {
@@ -32,7 +38,7 @@ function Signup(props) {
 
   return (
     <div className="sign-up-container my-1">
-      <Link className='go-to-login' href="/login">← Go to Login</Link>
+      <Link className='go-to-login' href="./Login">← Go to Login</Link>
 
       <h2 className='sign-up-heading'>Signup</h2>
       <form onSubmit={handleFormSubmit}>
@@ -41,7 +47,7 @@ function Signup(props) {
           <input
             placeholder="First"
             name="firstName"
-            type="firstName"
+            type="text"
             id="firstName"
             onChange={handleChange}
           />
@@ -51,7 +57,7 @@ function Signup(props) {
           <input
             placeholder="Last"
             name="lastName"
-            type="lastName"
+            type="text"
             id="lastName"
             onChange={handleChange}
           />

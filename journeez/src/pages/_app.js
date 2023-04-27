@@ -5,12 +5,12 @@ import Nav from '../components/Nav';
 import '../styles/globals.css';
 import { setContext } from 'apollo-link-context';
 // import Home from './pages/Home';
-import About from '../pages/About';
-import Explore from '../pages/Explore';
-import Login from '../pages/Login';
-import Signup from '../pages/Signup';
-import Profile from '../pages/Profile';
-import Blogs from '../pages/Blogs';
+// import About from '../pages/About';
+// import Explore from '../pages/Explore';
+// import Login from '../pages/Login';
+// import Signup from '../pages/Signup';
+// import Profile from '../pages/Profile';
+// import Blogs from '../pages/Blogs';
 
 const httpLink = createHttpLink({
   uri: '/graphql',

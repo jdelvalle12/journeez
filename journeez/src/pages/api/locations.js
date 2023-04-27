@@ -3,7 +3,7 @@ import axiosInstance from './axiosInstance';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
-    axiosInstance.get('/locations')
+    axiosInstance.get('../locations')
       .then(response => {
         res.status(200).json(response.data);
       })

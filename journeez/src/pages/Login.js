@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import  Link  from 'next/link';
+import { useRouter } from 'next/router';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-function Login(props) {
+function Login() {
+  const router = useRouter();
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
 
@@ -16,6 +18,7 @@ function Login(props) {
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
+      router.push('./Profile'); // redirect to profile page
     } catch (e) {
       console.log(e);
     }
@@ -30,10 +33,10 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link href="/signup">← Go to Signup</Link>
+    <div className="login-container my-1">
+      <Link className='go-to-signup' href="./Signup">← Go to Signup</Link>
 
-      <h2>Login</h2>
+      <h2 className='login-heading'>Login</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email address:</label>
@@ -60,7 +63,7 @@ function Login(props) {
             <p className="error-text">The provided credentials are incorrect</p>
           </div>
         ) : null}
-        <div className="flex-row flex-end">
+        <div className="submit-button flex-row flex-end">
           <button type="submit">Submit</button>
         </div>
       </form>

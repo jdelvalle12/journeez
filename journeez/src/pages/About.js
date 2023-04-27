@@ -7,7 +7,7 @@ export default function About() {
     return (
         <div>
             <div className="about-us">
-                <h2>About Us</h2>
+                <h2 className='about-us-heading font-bold text-blue-800'>About Us</h2>
                     <p>"Welcome to Journeez, the ultimate travel companion for solo adventurers. 
                         This app is designed to help you make the most of your solo travel experience 
                         by providing you with everything you need in one convenient place.
