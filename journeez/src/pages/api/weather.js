@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Image from 'next/image';
 
 const API_KEY = '49df163cf17140efac2ee29ad389b959'; // replace with your actual API key
 
@@ -15,7 +16,7 @@ export async function getWeatherForecast(city) {
   return response.data.data;
 }
 
-export default function weather() {
+export default function Weather() {
   const [city, setCity] = useState(''); // the current city
   const [currentWeather, setCurrentWeather] = useState(null); // the current weather data
   const [forecast, setForecast] = useState(null); // the weather forecast data
@@ -58,7 +59,7 @@ export default function weather() {
   }
 
   return (
-    <div class="weather-dashboard-card">
+    <div className="weather-dashboard-card">
     <div className='weather-dashboard'>
       <div className='search-container'>
       <form onSubmit={handleSearch}>
@@ -74,9 +75,11 @@ export default function weather() {
         <div className='current-weather-container'>
           <h2>Current weather in {city}:</h2>
           <div className='current-weather-details'>
-          <img
+          <Image
             src={`https://www.weatherbit.io/static/img/icons/${currentWeather.weather.icon}.png`}
             alt={currentWeather.weather.description}
+            width={64} // set the width to the actual width of the image
+            height={64} // set the height to the actual height of the image
           />
           <div>
           <p>Temperature: {currentWeather.temp} °F</p>
@@ -96,9 +99,11 @@ export default function weather() {
               <li key={item.datetime} className='forecast-item'>
                 <p className='forecast-date'> {new Date(item.datetime).toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</p>
                 <div className='forecast-details'>
-                <img
+                <Image
                   src={`https://www.weatherbit.io/static/img/icons/${item.weather.icon}.png`}
                   alt={item.weather.description}
+                  width={64} // set the width to the actual width of the image
+                  height={64} // set the height to the actual height of the image
                 />
                 </div>
                 <p className='forecast-temperature'>Temperature: {item.temp} °F</p>

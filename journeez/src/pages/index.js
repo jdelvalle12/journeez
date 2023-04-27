@@ -122,7 +122,7 @@ export default function Home() {
         <Weather className='weather-dashboard' />
       </div>
     
-      <div className="carousel-container relative w-full items-center  "> 
+      <div className="carousel-container relative w-full items-center "> 
         <Carousel 
           className="carousel-wrapper"
           images={[
