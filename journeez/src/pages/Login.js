@@ -1,9 +1,24 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import  Link  from 'next/link';
 import { useRouter } from 'next/router';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
+// import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+// import { resolvers, typeDefs } from "../server/schemas/resolvers";
+
+
+
+// const client = new ApolloClient({
+//   uri: "http://localhost:4000/graphql",
+//   cache: new InMemoryCache(),
+//   resolvers: resolvers,
+//   typeDefs: typeDefs,
+// });
+
+// const { data, loading, error } = useQuery(GET_POSTS);
+
+// const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
 
 function Login() {
   const router = useRouter();

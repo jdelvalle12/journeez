@@ -1,7 +1,18 @@
 import { useState, useEffect } from 'react';
 import Mapbox from 'mapbox-gl';
 import { Form, FormControl, Button } from 'react-bootstrap'; // importing search bar components from react-bootstrap
-import { useQuery } from '@apollo/client';
+// import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+// import { resolvers, typeDefs } from "../server/schemas/resolvers";
+
+
+
+//  const client = new ApolloClient({
+//   uri: "http://localhost:4000/graphql",
+//   cache: new InMemoryCache(),
+//   resolvers: resolvers,
+//   typeDefs: typeDefs,
+// });
+
 
 
 export default function Explore() {
