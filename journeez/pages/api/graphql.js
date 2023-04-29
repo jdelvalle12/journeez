@@ -1,6 +1,11 @@
-const { gql } = require('apollo-server-express');
+import { ApolloServer } from 'apollo-server-micro';
+// import { typeDefs } from '../../src/server/schemas/typeDefs';
+// import { resolvers } from '../../src/server/schemas/resolvers';
+// import { graphqlHTTP } from 'express-graphql';
+import { buildSchema } from 'graphql';
 
-const typeDefs = gql`
+const schema = buildSchema(`
+  ${typeDefs}
   type Location {
     _id: ID
     name: String
@@ -115,7 +120,20 @@ const typeDefs = gql`
     deleteLodging(_id: ID!): Lodging
     deleteAttraction(_id: ID!): Attraction
     deleteEatery(_id: ID!): Eatery
-  }
-`;
+  
+`);
 
-module.exports = typeDefs;
+
+
+const apolloServer = new ApolloServer({
+    typeDefs,
+    resolvers,
+  });
+
+  export const config = {
+    api: {
+      bodyParser: false,
+    },
+  };
+  
+  export default apolloServer.createHandler({ path: '/api/graphql' });

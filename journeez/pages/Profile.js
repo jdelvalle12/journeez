@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Navbar, Nav, Form, Button } from 'react-bootstrap';
 
 export default function Profile() {
+
+  // const [user, setUser] = useState(null);
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:3001/api/user`)
+  //     .then(response => response.json())
+  //     .then(data => setUser(data))
+  //     .catch(error => console.error(error));
+  // }, []);
+
+  // if (!user) {
+  //   return <div>Loading...</div>;
+  // }
 
     const handleDownload = (event) => {
         // add code to download the photo file
@@ -33,7 +46,7 @@ export default function Profile() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <h1>Profile Page</h1>
+      <h1>Welcome !</h1>
       <Form onSubmit={handleBlogPostSubmit}>
         <Form.Group controlId="blogPost">
           <Form.Label>Blog Post</Form.Label>

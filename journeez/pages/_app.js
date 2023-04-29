@@ -1,8 +1,8 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
-import { TravelProvider } from '../utils/GlobalState';
-import Nav from '../components/Nav';
-import '../styles/globals.css';
+import { TravelProvider } from '../src/utils/GlobalState';
+import Nav from '../src/components/Nav';
+import '../src/styles/globals.css';
 import { setContext } from 'apollo-link-context';
 // import Weather from "./api/weather";
 // import Home from './pages/Home';

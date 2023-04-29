@@ -1,23 +1,10 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import  Link  from 'next/link';
-import { useQuery, useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
-// import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-// import { resolvers, typeDefs } from "../server/schemas/resolvers";
+import {  useMutation } from '@apollo/client';
+import Auth from '../src/utils/auth';
+import { ADD_USER } from '../src/utils/mutations';
 
-
-// const client = new ApolloClient({
-//   uri: "http://localhost:4000/graphql",
-//   cache: new InMemoryCache(),
-//   resolvers: resolvers,
-//   typeDefs: typeDefs,
-// });
-
-// const { data, loading, error } = useQuery(GET_POSTS);
-
-// const [signupUser, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(ADD_USER);
 
 function Signup() {
   const [formState, setFormState] = useState({ email: '', password: '' });
